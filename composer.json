@@ -10,7 +10,10 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {},
+    "require": {
+        "barryvdh/laravel-ide-helper": "^2.6@dev",
+        "barryvdh/laravel-debugbar": "^3.2@dev"
+    },
     "autoload": {
         "psr-4": {
             "Thomas\\Bundle\\":"src/"
