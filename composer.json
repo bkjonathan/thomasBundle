@@ -1,0 +1,19 @@
+{
+    "name": "thomas/bundle",
+    "description": "This will setup for my project",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Thomas",
+            "email": "admin@thomas-itsolutions.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Thomas\\Bundle\\":"src/"
+        }
+    }
+}
