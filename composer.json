@@ -15,5 +15,12 @@
         "psr-4": {
             "Thomas\\Bundle\\":"src/"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Thomas\\Bundle\\ThomasBundleServiceProvider"
+            ]
+        }
     }
 }
