@@ -25,7 +25,8 @@
         "laravel/socialite": "^5.0@dev",
         "rap2hpoutre/fast-excel": "dev-master",
         "simplesoftwareio/simple-qrcode": "dev-master",
-        "stichoza/google-translate-php": "dev-master"
+        "stichoza/google-translate-php": "dev-master",
+        "laravel/sanctum": "^2.0@dev"
     },
     "autoload": {
         "psr-4": {

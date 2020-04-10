@@ -20,6 +20,11 @@ class ThomasBundleServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/config/thomas.php' => config_path('thomas.php'),
         ]);
+
+        $this->publishes([
+            __DIR__.'/Models/' => base_path('app/Http/Models')
+        ], 'Models');
+
     }
 
     public function register()
