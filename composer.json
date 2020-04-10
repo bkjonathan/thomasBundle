@@ -16,12 +16,16 @@
         "spatie/laravel-permission": "dev-master",
         "spatie/laravel-medialibrary": "dev-master",
         "barryvdh/laravel-dompdf": "^0.8.0@dev",
-        "laravel/telescope": "^4.0@dev",
         "laravel/passport": "^9.0@dev",
         "rap2hpoutre/laravel-log-viewer": "dev-master",
         "owen-it/laravel-auditing": "^10.0@dev",
         "beyondcode/laravel-websockets": "dev-master",
-        "laravel/ui": "^3.0@dev"
+        "laravel/ui": "^3.0@dev",
+        "artesaos/seotools": "dev-master",
+        "laravel/socialite": "^5.0@dev",
+        "rap2hpoutre/fast-excel": "dev-master",
+        "simplesoftwareio/simple-qrcode": "dev-master",
+        "stichoza/google-translate-php": "dev-master"
     },
     "autoload": {
         "psr-4": {
