@@ -1,4 +1,5 @@
 <?php
 return[
-    'title'=>"Thomas Studio"
+    'title'=>"Thomas Studio",
+    'default_search'=>['name']
 ];
