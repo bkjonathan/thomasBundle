@@ -37,6 +37,15 @@ class ThomasBundleServiceProvider extends ServiceProvider
                 'driver' => 'session',
                 'provider' => 'admins',
             ],
+            'auth.guards.admin_api' => [
+                'driver' => 'token',
+                'provider' => 'admins',
+                'hash' => false,
+            ],
+            'auth.guards.sanctum_admin' => [
+                'driver' => 'sanctum',
+                'provider' => 'admins',
+            ],
             'auth.providers.admins'=>[
                 'driver' => 'eloquent',
                 'model' => Admin::class

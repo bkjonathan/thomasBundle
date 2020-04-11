@@ -30,7 +30,7 @@ class AuthController extends Controller
         $validator = Validator::make($request->all(), $validate);
 
         if ($validator->fails()) {
-            return response(['errors'=> $validator->errors()]);
+            return response(['errors'=> $validator->errors()],422);
         }
 
         $data=$validator->validated();
@@ -71,7 +71,7 @@ class AuthController extends Controller
         $validator = Validator::make($request->all(), $validate);
 
         if ($validator->fails()) {
-            return response(['errors'=> $validator->errors()]);
+            return response(['errors'=> $validator->errors()],422);
         }
 
         $data=$validator->validated();
@@ -89,15 +89,18 @@ class AuthController extends Controller
             ];
         }else{
             $user = User::where('email', $data['email'])->first();
-            $user_data=[
-                'user'=>$user,
-                'token'=>$user->createToken('vueapp')->plainTextToken,
-            ];
+            if ($user){
+                $user_data=[
+                    'user'=>$user,
+                    'token'=>$user->createToken('vueapp')->plainTextToken,
+                ];
+            }
+
         };
 
 
         if (! $user || ! Hash::check($request->password, $user->password)) {
-            return response(['errors'=>'The provided credentials are incorrect.']);
+            return response(['errors'=>'The provided credentials are incorrect.'],422);
         }
 
         return response($user_data,200);
