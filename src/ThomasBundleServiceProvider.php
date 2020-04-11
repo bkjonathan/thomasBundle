@@ -3,6 +3,7 @@
 namespace Thomas\Bundle;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
 use Thomas\Bundle\Models\Admin;
 
@@ -24,7 +25,7 @@ class ThomasBundleServiceProvider extends ServiceProvider
         ]);
 
         $this->publishes([
-            __DIR__.'/Models/' => base_path('app/Http/Thomas/Models')
+            __DIR__ . '/Models/' => base_path('app/Http/Thomas/Models')
         ], 'Models');
 
     }
@@ -46,11 +47,11 @@ class ThomasBundleServiceProvider extends ServiceProvider
                 'driver' => 'sanctum',
                 'provider' => 'admins',
             ],
-            'auth.providers.admins'=>[
+            'auth.providers.admins' => [
                 'driver' => 'eloquent',
                 'model' => Admin::class
             ],
-            'auth.passwords.admins'=>[
+            'auth.passwords.admins' => [
                 'provider' => 'admins',
                 'table' => 'password_resets',
                 'expire' => 60,
@@ -59,7 +60,8 @@ class ThomasBundleServiceProvider extends ServiceProvider
         ]);
     }
 
-    private function SetWhereLike(){
+    private function SetWhereLike()
+    {
         Builder::macro('whereLike', function ($attributes, string $searchTerm) {
             $this->where(function (Builder $query) use ($attributes, $searchTerm) {
                 foreach (\Arr::wrap($attributes) as $attribute) {
@@ -69,7 +71,7 @@ class ThomasBundleServiceProvider extends ServiceProvider
                             [$relationName, $relationAttribute] = explode('.', $attribute);
 
                             $query->orWhereHas($relationName, function (Builder $query) use ($relationAttribute, $searchTerm) {
-                                $query->where($relationAttribute, 'LIKE', "%%".strtolower($searchTerm)."%%");
+                                $query->where($relationAttribute, 'LIKE', "%%" . strtolower($searchTerm) . "%%");
                             });
                         },
                         function (Builder $query) use ($attribute, $searchTerm) {

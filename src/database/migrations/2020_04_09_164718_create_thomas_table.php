@@ -53,6 +53,25 @@ class CreateThomasTable extends Migration
             $table->timestamps();
         });
 
+        Schema::create('thomas_access_codes', function (Blueprint $table) {
+            $table->id();
+            $table->string('code');
+            $table->boolean('status')->default(true);
+            $table->integer('limit')->default(5);
+            $table->integer('count')->default(0);
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->timestamps();
+        });
+
+        Schema::create('thomas_access_code_devices', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('thomas_access_code_id');
+            $table->string('token_id')->nullable();
+            $table->string('token')->nullable();
+            $table->string('device')->nullable()->unique();
+            $table->timestamps();
+        });
 
     }
 
