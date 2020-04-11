@@ -16,13 +16,14 @@ class ThomasBundleServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
 
         $this->mergeConfigFrom(__DIR__ . '/config/thomas.php', 'thomas');
+//        $this->mergeConfigFrom(__DIR__ . '/config/auth.php', 'auth');
 
         $this->publishes([
             __DIR__ . '/config/thomas.php' => config_path('thomas.php'),
         ]);
 
         $this->publishes([
-            __DIR__.'/Models/' => base_path('app/Http/Models')
+            __DIR__.'/Models/' => base_path('app/Http/Thomas/Models')
         ], 'Models');
 
     }

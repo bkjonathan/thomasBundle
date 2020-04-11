@@ -39,12 +39,23 @@ class AuthController extends Controller
         //Create User
         if ($request->has('isAdmin')){
             $user = Admin::create($data);
+            $user_data=[
+                'user'=>$user,
+                'token'=>$user->createToken('vueapp')->plainTextToken,
+                'isAdmin'=>true
+            ];
         }else{
             $user = User::create($data);
+            $user_data=[
+                'user'=>$user,
+                'token'=>$user->createToken('vueapp')->plainTextToken,
+            ];
         }
-        $token = $user->createToken('token-name');
+//        $token = $user->createToken('token-name');
 
-        return $token->plainTextToken;
+//        return $token->plainTextToken;
+
+        return response($user_data,200);
 
     }
 
