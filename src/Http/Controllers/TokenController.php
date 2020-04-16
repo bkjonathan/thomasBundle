@@ -6,6 +6,7 @@ namespace Thomas\Bundle\Http\Controllers;
 
 
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use Thomas\Bundle\Models\Admin;
 use Thomas\Bundle\MyTrait\ThomasHelper;
 
@@ -28,6 +29,7 @@ class TokenController
     public function store(){}
 
     public function show($id){
+        return config('auth');
         $user=request('isAdmin') ? new Admin(): new User();
 //        $model_name=request('userType') === 'admin' ? "Thomas\\Bundle\Models\\Admin": 'App\\User';
 

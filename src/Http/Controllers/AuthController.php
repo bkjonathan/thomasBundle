@@ -7,6 +7,7 @@ namespace Thomas\Bundle\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Thomas\Bundle\Models\Admin;
@@ -96,6 +97,7 @@ class AuthController extends Controller
         $user_data = [];
         if ($request->has('isAdmin')) {
             $user = Admin::where('email', $data['email'])->first();
+//            Auth::guard('admin')->login($user);
             $user_data['isAdmin'] = true;
         } else {
             $user = User::where('email', $data['email'])->first();
